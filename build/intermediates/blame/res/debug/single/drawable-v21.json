@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/drawable-v21/abc_btn_colored_material.xml"
+    }
+]

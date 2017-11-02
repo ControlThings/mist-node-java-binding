@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

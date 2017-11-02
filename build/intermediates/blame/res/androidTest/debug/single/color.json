@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_search_url_text.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/switch_thumb_material_light.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_material_light.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/switch_thumb_material_dark.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/media/jeppe/Samsung/Work/Android/Aar/mist-node-android/MistNodeApi/build/intermediates/res/merged/androidTest/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/home/jeppe/.android/build-cache/66aecfc56e126b03b97c6d89ef8b41d3a83fc174/output/res/color/abc_secondary_text_material_light.xml"
+    }
+]
