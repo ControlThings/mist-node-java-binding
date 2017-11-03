@@ -11,7 +11,7 @@ import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
 import mistNode.Peer;
-import mistNode.Errors;
+import wishApp.Errors;
 import node.RequestInterface;
 
 import static node.RequestInterface.bsonException;

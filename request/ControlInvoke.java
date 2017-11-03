@@ -13,7 +13,7 @@ import org.bson.io.BasicOutputBuffer;
 import java.lang.reflect.Field;
 
 import mistNode.Peer;
-import mistNode.Errors;
+import wishApp.Errors;
 import node.RequestInterface;
 
 import static node.RequestInterface.bsonException;

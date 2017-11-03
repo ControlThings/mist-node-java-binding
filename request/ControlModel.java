@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import mistNode.Peer;
-import mistNode.Errors;
+import wishApp.Errors;
 import node.RequestInterface;
 
 import static node.RequestInterface.bsonException;
