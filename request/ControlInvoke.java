@@ -12,11 +12,11 @@ import org.bson.io.BasicOutputBuffer;
 
 import java.lang.reflect.Field;
 
-import mistNode.Peer;
+import wishApp.Peer;
 import wishApp.Errors;
-import node.RequestInterface;
+import mistNode.RequestInterface;
 
-import static node.RequestInterface.bsonException;
+import static mistNode.RequestInterface.bsonException;
 
 /**
  * Created by jeppe on 26/07/16.

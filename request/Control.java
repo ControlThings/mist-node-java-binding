@@ -4,8 +4,8 @@ import org.bson.BsonArray;
 import org.bson.BsonDocument;
 import org.json.JSONObject;
 
-import mistNode.Peer;
-import node.RequestInterface;
+import wishApp.Peer;
+import mistNode.RequestInterface;
 
 /**
  * Created by jeppe on 11/30/16.

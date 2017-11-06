@@ -10,11 +10,11 @@ import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
-import mistNode.Peer;
+import wishApp.Peer;
 import wishApp.Errors;
-import node.RequestInterface;
+import mistNode.RequestInterface;
 
-import static node.RequestInterface.bsonException;
+import static mistNode.RequestInterface.bsonException;
 
 class ControlWrite {
 
