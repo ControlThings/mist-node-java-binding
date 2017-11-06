@@ -73,7 +73,7 @@ public class MistNode {
      */
     public synchronized native int request(byte[] peer, byte[] req, RequestCb cb); //will call mist_app_request
 
-    public synchronized native int requestCancel(int id);
+    public synchronized native void requestCancel(int id);
 
 
     /**
