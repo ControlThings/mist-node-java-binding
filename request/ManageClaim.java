@@ -5,7 +5,7 @@ import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
 import mistNode.MistNode;
-import mistNode.Peer;
+import wishApp.Peer;
 
 /**
  * Created by jeppe on 10/4/16.

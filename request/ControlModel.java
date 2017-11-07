@@ -9,7 +9,7 @@ import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
-import mistNode.Peer;
+import wishApp.Peer;
 import mistNode.MistNode;
 
 /**

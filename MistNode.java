@@ -9,6 +9,7 @@ import org.bson.RawBsonDocument;
 import addon.WishFile;
 
 import mistNode.Endpoint.*;
+import wishApp.Peer;
 
 
 /**

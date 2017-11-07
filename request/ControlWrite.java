@@ -4,7 +4,7 @@ import org.bson.BsonBinaryWriter;
 import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
-import mistNode.Peer;
+import wishApp.Peer;
 import mistNode.MistNode;
 
 class ControlWrite {

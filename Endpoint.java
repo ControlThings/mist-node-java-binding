@@ -7,6 +7,7 @@ import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
 import addon.MistException;
+import wishApp.Peer;
 
 /**
  * Created by jan on 11/1/16.
