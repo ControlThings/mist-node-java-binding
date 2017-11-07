@@ -1,4 +1,4 @@
-package mistNode.newApi;
+package mistNode;
 
 import org.bson.BSONException;
 import org.bson.BsonBinary;

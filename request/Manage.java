@@ -1,6 +1,6 @@
 package mistNode.request;
 
-import wishApp.Peer;
+import mistNode.Peer;
 
 /**
  * Created by jeppe on 11/30/16.
@@ -8,11 +8,11 @@ import wishApp.Peer;
 
 public class Manage {
 
-    public static void claim(Peer peer, ClaimCb callback) {
-        ManageClaim.request(peer, callback);
+    public static int claim(Peer peer, ClaimCb callback) {
+       return ManageClaim.request(peer, callback);
     }
 
-    public interface ClaimCb extends Callback {
-        public void cb();
+    public abstract static class ClaimCb extends Callback {
+        public abstract void cb();
     }
 }

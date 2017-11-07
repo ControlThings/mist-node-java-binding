@@ -7,7 +7,6 @@ import org.bson.BsonDocument;
 import org.bson.RawBsonDocument;
 
 import addon.WishFile;
-import mistNode.newApi.Peer;
 
 import mistNode.Endpoint.*;
 

@@ -1,90 +1,74 @@
 package mistNode.request;
 
-import android.util.Log;
-
 import org.bson.BSONException;
-import org.bson.BsonBinary;
 import org.bson.BsonBinaryWriter;
 import org.bson.BsonDocument;
+import org.bson.BsonDocumentReader;
+import org.bson.BsonReader;
 import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import wishApp.Peer;
-import wishApp.Errors;
-import mistNode.RequestInterface;
-
-import static mistNode.RequestInterface.bsonException;
+import mistNode.Peer;
+import mistNode.MistNode;
 
 /**
  * Created by jeppe on 25/07/16.
  */
 class ControlModel {
-    static void request(Peer peer, Control.ModelCb callback) {
-        final String op = "mist.control.model";
+    static int request(Peer peer, Control.ModelCb callback) {
+        final String op = "control.model";
 
         BasicOutputBuffer buffer = new BasicOutputBuffer();
         BsonWriter writer = new BsonBinaryWriter(buffer);
         writer.writeStartDocument();
+
+        writer.writeString("op", op);
+
         writer.writeStartArray("args");
-
-        writer.writeStartDocument();
-        writer.writeBinaryData("luid", new BsonBinary(peer.getLocalId()));
-        writer.writeBinaryData("ruid", new BsonBinary(peer.getRemoteId()));
-        writer.writeBinaryData("rhid", new BsonBinary(peer.getRemoteHostId()));
-        writer.writeBinaryData("rsid", new BsonBinary(peer.getRemoteServiceId()));
-        writer.writeString("protocol", peer.getProtocol());
-        writer.writeBoolean("online", peer.isOnline());
-        writer.writeEndDocument();
-
         writer.writeEndArray();
+
+        writer.writeInt32("id", 0);
+
         writer.writeEndDocument();
         writer.flush();
 
-        RequestInterface.getInstance().mistApiRequest(op, buffer.toByteArray(), new RequestInterface.Callback() {
-            private Control.ModelCb callback;
+        return MistNode.getInstance().request(peer.toBson(), buffer.toByteArray(), new MistNode.RequestCb() {
+            Control.ModelCb cb;
 
             @Override
-            public void ack(byte[] dataBson) {
-                response(dataBson);
-                callback.end();
-            }
-
-            @Override
-            public void sig(byte[] dataBson) {
-                response(dataBson);
-            }
-
-            private void response(byte[] dataBson) {
+            public void response(byte[] data) {
                 try {
-                    BsonDocument bson = new RawBsonDocument(dataBson);
+                    BsonDocument bson = new RawBsonDocument(data);
                     BsonDocument bsonDocument = bson.get("data").asDocument();
-                    try {
-                        callback.cb(new JSONObject(bsonDocument.toJson()));
-                    } catch (JSONException e) {
-                        Log.d(op, "Json parsing error: " + e);
-                        return;
-                    }
+
+                    BsonReader bsonReader = new BsonDocumentReader(bsonDocument);
+
+                    BasicOutputBuffer outputBuffer = new BasicOutputBuffer();
+                    BsonWriter bsonWriter = new BsonBinaryWriter(outputBuffer);
+                    bsonWriter.pipe(bsonReader);
+
+                    cb.cb(outputBuffer.toByteArray());
                 } catch (BSONException e) {
-                    Errors.mistError(op, bsonException, e.getMessage(), dataBson);
-                    callback.err(bsonException, "bson error: " + e.getMessage());
+                    cb.err(Callback.BSON_ERROR_CODE, Callback.BSON_ERROR_STRING);
                 }
             }
 
             @Override
-            public void err(int code, String msg) {
-                Log.d(op, "RPC error: " + msg + " code: " + code);
-                callback.err(code, msg);
+            public void end() {
+                cb.end();
             }
 
-            private RequestInterface.Callback init(Control.ModelCb callback) {
-                this.callback = callback;
+            @Override
+            public void err(int code, String msg) {
+                cb.err(code, msg);
+            }
+
+            private MistNode.RequestCb init(Control.ModelCb callback) {
+                this.cb = callback;
                 return this;
             }
+
         }.init(callback));
     }
-
-
 }
