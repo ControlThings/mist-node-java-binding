@@ -18,7 +18,15 @@ import mistNode.Endpoint.*;
 
 public class MistNode {
     private Context context;
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     private WishFile file;
+    public void setWishFile(WishFile file) {
+        this.file = file;
+    }
+
 
     static {
         System.loadLibrary("mist");
@@ -26,6 +34,8 @@ public class MistNode {
 
     /* Private constructor must exist to enforce Singleton pattern */
     private MistNode() {}
+
+
 
 
     private static class MistNodeHolder {
