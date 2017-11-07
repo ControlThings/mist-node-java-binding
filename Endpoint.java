@@ -6,7 +6,7 @@ import org.bson.BsonBinaryWriter;
 import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
-import addon.MistException;
+import addon.AddonException;
 import mistNode.newApi.Peer;
 
 /**
@@ -69,7 +69,7 @@ public class Endpoint {
     private void setType(int type) {
         Log.d(TAG, "setType: " + this.type + " " + type);
         if (this.type != MIST_TYPE_UNDEFINED && this.type != type) {
-            throw new MistException("Type is already set to: " + this.type + " trying to set it to: " + type );
+            throw new AddonException("Type is already set to: " + this.type + " trying to set it to: " + type );
         }
         this.type = type;
     }
