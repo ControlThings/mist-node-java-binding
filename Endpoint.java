@@ -7,7 +7,8 @@ import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
 import addon.AddonException;
-import mistNode.newApi.Peer;
+import wishApp.Peer;
+
 
 /**
  * Created by jan on 11/1/16.
