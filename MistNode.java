@@ -21,15 +21,7 @@ import wishApp.RequestInterface;
  */
 
 public class MistNode {
-    private Context context;
-    public void setContext(Context context) {
-        this.context = context;
-    }
 
-    private WishFile file;
-    public void setWishFile(WishFile file) {
-        this.file = file;
-    }
 
 
     private static List<Error> nodeErrorHandleList;
@@ -55,17 +47,14 @@ public class MistNode {
     }
 
     public void startMistApp(Context context) {
-        this.context = context;
-        file = new WishFile(context);
-
         String appName = context.getPackageName();
         if (appName.length() > 32) {
             appName = appName.substring(0, 32);
         }
-        startMistApp(appName);
+        startMistApp(appName, new WishFile(context));
     }
 
-    synchronized native void startMistApp(String appName);
+    synchronized native void startMistApp(String appName, WishFile wishFile);
     synchronized native void stopMistApp();
 
     public synchronized native void addEndpoint(Endpoint ep);
@@ -208,74 +197,7 @@ public class MistNode {
     void offline(byte[] peerBson) {
 
     }
-
-
-
-    /**
-     * Open a file
-     *
-     * @param filename the filename
-     * @return the file ID number which can be used with read, write..., or -1 for an error
-     */
-    public int openFile(String filename) {
-        return file.open(filename);
-    }
-
-    /**
-     * Close a fileId
-     *
-     * @param fileId the fileId to close
-     * @return 0 for success, -1 for an error
-     */
-    public int closeFile(int fileId) {
-        return file.close(fileId);
-    }
-
-    /**
-     * Read from a file
-     *
-     * @param fileId the fileId, obtained with open()
-     * @param buffer The buffer to place the bytes into
-     * @param count  the number of bytes to read
-     * @return the amount of bytes read, or 0 if EOF, or -1 for an error
-     */
-    public int readFile(int fileId, byte[] buffer, int count) {
-        if (count != buffer.length) {
-            return -1;
-        }
-        return file.read(fileId, buffer, count);
-    }
-
-    /**
-     * Write to a file in internal storage
-     *
-     * @param fileId the fileId
-     * @param buffer the databuffer to be written
-     * @param count  The
-     * @return
-     */
-    public int writeFile(int fileId, byte[] buffer, int count) {
-        if (count != buffer.length) {
-            return -1;
-        } else {
-            return file.write(fileId, buffer);
-        }
-    }
-
-    public int seekFile(int fileId, int offset, int whence) {
-        return (int) file.seek(fileId, offset, whence);
-    }
-
-    public int rename(String oldName, String newName) {
-        return file.rename(oldName, newName);
-    }
-
-    public int remove(String filename) {
-        return file.remove(filename);
-    }
-
-
-
+    
     static void registerNodeRpcErrorHandler(Error error) {
         synchronized (nodeErrorHandleList) {
             nodeErrorHandleList.add(error);
@@ -285,8 +207,6 @@ public class MistNode {
     interface Error {
         public void cb(int code, String msg);
     }
-
-
 
     public abstract static class RequestCb {
 
