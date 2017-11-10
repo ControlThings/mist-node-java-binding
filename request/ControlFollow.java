@@ -49,7 +49,7 @@ class ControlFollow {
                         cb.cbInt(epid, bsonValue.asInt32().getValue());
                     }
                     if (bsonValue.isDouble()) {
-                        cb.cbFloat(epid, (float) bsonValue.asDouble().getValue());
+                        cb.cbFloat(epid, bsonValue.asDouble().getValue());
                     }
                     if (bsonValue.isString()) {
                         cb.cbString(epid, bsonValue.asString().getValue());

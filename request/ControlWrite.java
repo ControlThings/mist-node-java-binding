@@ -8,7 +8,7 @@ import wishApp.Peer;
 import mistNode.MistNode;
 
 class ControlWrite {
-
+/*
     static int request(Peer peer, String epid, Boolean state, Control.WriteCb callback) {
         return send(peer, epid, state, null, null, null, callback);
     }
@@ -24,9 +24,9 @@ class ControlWrite {
     static int request(Peer peer, String epid, String state, Control.WriteCb callback) {
         return send(peer, epid, null, null, null, state, callback);
     }
+*/
 
-
-    private static int send(Peer peer, String epid, Boolean boolState, Integer intState, Float floatState, String stringState, Control.WriteCb callback) {
+     static int request(Peer peer, String epid, Boolean boolState, Integer intState, Float floatState, String stringState, Control.WriteCb callback) {
         final String op = "control.write";
 
         BasicOutputBuffer buffer = new BasicOutputBuffer();

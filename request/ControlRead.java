@@ -40,7 +40,7 @@ class ControlRead {
                 try {
                     BsonDocument bson = new RawBsonDocument(data);
                     if (bson.get("data").isBoolean()) {
-                        cb.cbBoolean(bson.get("data").asBoolean().getValue());
+                        cb.cbBool(bson.get("data").asBoolean().getValue());
                     } else if (bson.get("data").isInt32()) {
                         cb.cbInt(bson.get("data").asInt32().getValue());
                     } else if (bson.get("data").isDouble()) {

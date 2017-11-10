@@ -6,10 +6,14 @@ import org.bson.BSONException;
 import org.bson.BsonDocument;
 import org.bson.RawBsonDocument;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import addon.WishFile;
 
 import mistNode.Endpoint.*;
 import wishApp.Peer;
+import wishApp.RequestInterface;
 
 
 /**
@@ -28,12 +32,16 @@ public class MistNode {
     }
 
 
+    private static List<Error> nodeErrorHandleList;
+
     static {
         System.loadLibrary("mist");
     }
 
     /* Private constructor must exist to enforce Singleton pattern */
-    private MistNode() {}
+    private MistNode() {
+        nodeErrorHandleList = new ArrayList<>();
+    }
 
 
 
@@ -267,6 +275,19 @@ public class MistNode {
     }
 
 
+
+    static void registerNodeRpcErrorHandler(Error error) {
+        synchronized (nodeErrorHandleList) {
+            nodeErrorHandleList.add(error);
+        }
+    }
+
+    interface Error {
+        public void cb(int code, String msg);
+    }
+
+
+
     public abstract static class RequestCb {
 
         /**
@@ -297,6 +318,12 @@ public class MistNode {
          * @param code the error code
          * @param msg  a free-text error message
          */
-        public abstract void err(int code, String msg);
+        public void err(int code, String msg) {
+            synchronized (nodeErrorHandleList) {
+                for (Error error : nodeErrorHandleList) {
+                    error.cb(code, msg);
+                }
+            }
+        };
     }
 }

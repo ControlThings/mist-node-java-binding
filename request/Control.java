@@ -1,5 +1,8 @@
 package mistNode.request;
 
+import org.bson.BsonArray;
+import org.bson.BsonDocument;
+
 import wishApp.Peer;
 
 /**
@@ -17,20 +20,41 @@ public class Control {
     }
 
     public static int write(Peer peer, String epid, Boolean state, Control.WriteCb callback) {
-        return ControlWrite.request(peer, epid, state, callback);
+        return ControlWrite.request(peer, epid, state, null, null, null, callback);
     }
     public static int write(Peer peer, String epid, int state, Control.WriteCb callback) {
-        return ControlWrite.request(peer, epid, state, callback);
+        return ControlWrite.request(peer, epid, null,  state, null, null, callback);
     }
     public static int write(Peer peer, String epid, float state, Control.WriteCb callback) {
-        return ControlWrite.request(peer, epid, state, callback);
+        return ControlWrite.request(peer, epid, null, null, state, null, callback);
     }
     public static int write(Peer peer, String epid, String state, Control.WriteCb callback) {
-        return ControlWrite.request(peer, epid, state, callback);
+        return ControlWrite.request(peer, epid, null, null, null, state, callback);
     }
 
-    public static int invoke(Peer peer, String epid, byte[] bson, InvokeCb callback) {
-        return ControlInvoke.request(peer, epid, bson, callback);
+    public static int invoke(Peer peer, String epid, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid, null, null, null, null, null, null, null, callback);
+    }
+    public static int invoke(Peer peer, String epid, String value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid,  null, null, null, value, null, null, null,callback);
+    }
+    public static int invoke(Peer peer, String epid, Boolean value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid, value, null, null, null, null, null, null, callback);
+    }
+    public static int invoke(Peer peer, String epid, int value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid,null, value, null, null, null, null, null,callback);
+    }
+    public static int invoke(Peer peer, String epid, float value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid,null, null, value, null, null, null, null,callback);
+    }
+    public static int invoke(Peer peer, String epid, byte[] value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid, null, null, null, null, value, null, null,callback);
+    }
+    public static int invoke(Peer peer, String epid, BsonDocument value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid,  null, null, null, null, null, value, null,callback);
+    }
+    public static int invoke(Peer peer, String epid, BsonArray value, InvokeCb callback) {
+        return ControlInvoke.request(peer, epid,null, null, null, null, null, null, value, callback);
     }
 
     public static int follow(Peer peer, FollowCb callback) {
@@ -46,7 +70,7 @@ public class Control {
     }
 
     public abstract static class ReadCb extends Callback {
-        public void cbBoolean(Boolean data) {};
+        public void cbBool(Boolean data) {};
         public void cbInt(int data) {};
         public void cbFloat(double data) {};
         public void cbString(String data) {};
@@ -57,13 +81,19 @@ public class Control {
     }
 
     public abstract static class InvokeCb extends Callback {
-        public abstract void cb(byte[] bson);
+        public void cbBool(boolean value) {};
+        public void cbInt(int value) {};
+        public void cbFloat(float value) {};
+        public void cbString(String value) {};
+        public void cbByte(byte[] value) {};
+        public void cbDocument(BsonDocument value) {};
+        public void cbArray(BsonArray value) {};
     }
 
     public abstract static class FollowCb extends Callback {
         public void cbBool(String epid, boolean value) {};
         public void cbInt(String epid, int value) {};
-        public void cbFloat(String epid, float value) {};
+        public void cbFloat(String epid, double value) {};
         public void cbString(String epid, String value) {};
     }
 
