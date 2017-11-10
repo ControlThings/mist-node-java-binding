@@ -24,16 +24,14 @@ public class MistNode {
 
 
 
-    private static List<Error> nodeErrorHandleList;
+    private static List<Error> nodeErrorHandleList = new ArrayList<>();
 
     static {
         System.loadLibrary("mist");
     }
 
     /* Private constructor must exist to enforce Singleton pattern */
-    private MistNode() {
-        nodeErrorHandleList = new ArrayList<>();
-    }
+    private MistNode() {}
 
 
 
