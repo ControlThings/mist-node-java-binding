@@ -1,4 +1,4 @@
-package mistNode;
+package mist.node;
 
 import android.content.Context;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 import addon.WishFile;
 
-import mistNode.Endpoint.*;
+import mist.node.Endpoint.*;
 import wishApp.Peer;
 import wishApp.RequestInterface;
 

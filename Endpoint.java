@@ -1,4 +1,4 @@
-package mistNode;
+package mist.node;
 
 import android.util.Log;
 

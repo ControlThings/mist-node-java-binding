@@ -1,4 +1,4 @@
-package mistNode.request;
+package mist.node.request;
 
 import org.bson.BSONException;
 import org.bson.BsonBinaryWriter;
@@ -10,7 +10,7 @@ import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
 import wishApp.Peer;
-import mistNode.MistNode;
+import mist.node.MistNode;
 
 /**
  * Created by jeppe on 25/07/16.

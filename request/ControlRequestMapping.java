@@ -1,11 +1,11 @@
-package mistNode.request;
+package mist.node.request;
 
 import org.bson.BsonBinary;
 import org.bson.BsonBinaryWriter;
 import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
-import mistNode.MistNode;
+import mist.node.MistNode;
 import wishApp.Peer;
 
 

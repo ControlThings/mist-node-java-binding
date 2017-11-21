@@ -1,4 +1,4 @@
-package mistNode.request;
+package mist.node.request;
 
 import wishApp.Peer;
 
