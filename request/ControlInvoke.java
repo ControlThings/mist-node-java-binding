@@ -3,21 +3,16 @@ package mistNode.request;
 import org.bson.BSONException;
 import org.bson.BsonArray;
 import org.bson.BsonBinary;
-import org.bson.BsonBinaryWriter;
 import org.bson.BsonDocument;
 import org.bson.BsonDocumentReader;
 import org.bson.BsonReader;
-import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
-import bson.BsonExtendedBinaryWriter;
-import bson.BsonExtendedWriter;
+import utils.bson.BsonExtendedBinaryWriter;
+import utils.bson.BsonExtendedWriter;
 import wishApp.Peer;
 import mistNode.MistNode;
-
-import static mistNode.request.Callback.BSON_ERROR_CODE;
-import static mistNode.request.Callback.BSON_ERROR_STRING;
 
 /**
  * Created by jeppe on 26/07/16.
