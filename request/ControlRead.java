@@ -8,7 +8,7 @@ import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
 import mist.node.MistNode;
-import wishApp.Peer;
+import wish.Peer;
 
 /**
  * Created by jeppe on 26/07/16.

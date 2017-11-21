@@ -7,7 +7,7 @@ import org.bson.BsonWriter;
 import org.bson.io.BasicOutputBuffer;
 
 import addon.AddonException;
-import wishApp.Peer;
+import wish.Peer;
 
 
 /**

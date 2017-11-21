@@ -8,7 +8,7 @@ import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
-import wishApp.Peer;
+import wish.Peer;
 import mist.node.MistNode;
 
 class ControlFollow {

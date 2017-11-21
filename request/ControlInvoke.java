@@ -11,7 +11,7 @@ import org.bson.io.BasicOutputBuffer;
 
 import utils.bson.BsonExtendedBinaryWriter;
 import utils.bson.BsonExtendedWriter;
-import wishApp.Peer;
+import wish.Peer;
 import mist.node.MistNode;
 
 /**

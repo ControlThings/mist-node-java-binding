@@ -1,6 +1,6 @@
 package mist.node.request;
 
-import wishApp.Peer;
+import wish.Peer;
 
 /**
  * Created by jeppe on 11/30/16.

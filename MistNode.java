@@ -12,8 +12,8 @@ import java.util.List;
 import addon.WishFile;
 
 import mist.node.Endpoint.*;
-import wishApp.Peer;
-import wishApp.RequestInterface;
+import wish.Peer;
+import wish.RequestInterface;
 
 
 /**

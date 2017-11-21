@@ -3,7 +3,7 @@ package mist.node.request;
 import org.bson.BsonArray;
 import org.bson.BsonDocument;
 
-import wishApp.Peer;
+import wish.Peer;
 
 /**
  * Created by jeppe on 11/30/16.
