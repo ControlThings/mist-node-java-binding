@@ -9,6 +9,7 @@ import org.bson.RawBsonDocument;
 import java.util.ArrayList;
 import java.util.List;
 
+import addon.AddonException;
 import addon.WishFile;
 
 import mist.node.Endpoint.*;
@@ -21,8 +22,12 @@ import wish.RequestInterface;
  */
 
 public class MistNode {
-
-
+    /** startMistApp return value for success */
+    private static final int MIST_NODE_SUCCESS = 0;
+    /** startMistApp return error return if started multiple times */
+    private static final int MIST_NODE_ERROR_MULTIPLE_TIMES = -1;
+    /** startMistApp return error return for other errors */
+    private static final int MIST_NODE_ERROR_UNSPECIFIED = -10;
 
     private static List<Error> nodeErrorHandleList = new ArrayList<>();
 
@@ -32,9 +37,6 @@ public class MistNode {
 
     /* Private constructor must exist to enforce Singleton pattern */
     private MistNode() {}
-
-
-
 
     private static class MistNodeHolder {
         private static final MistNode INSTANCE = new MistNode();
@@ -49,10 +51,21 @@ public class MistNode {
         if (appName.length() > 32) {
             appName = appName.substring(0, 32);
         }
-        startMistApp(appName, new WishFile(context));
+        int ret = startMistApp(appName, new WishFile(context));
+        if (ret != MIST_NODE_SUCCESS) {
+            if (ret == MIST_NODE_ERROR_MULTIPLE_TIMES) {
+                throw new AddonException("MistNode cannot be started multiple times.");
+            }
+            else {
+                throw new AddonException("Unspecified MistNode error.");
+            }
+        }
     }
 
-    synchronized native void startMistApp(String appName, WishFile wishFile);
+    /**
+        @return MIST_API_SUCCESS, for a successful start, or MIST_API_ERROR_MULTIPLE_TIMES for error
+    */
+    synchronized native int startMistApp(String appName, WishFile wishFile);
     synchronized native void stopMistApp();
 
     public synchronized native void addEndpoint(Endpoint ep);
@@ -171,7 +184,7 @@ public class MistNode {
         }
     }
 
-    void invoke(Endpoint ep, byte[] peerBson, int requestId, byte[] args) {
+    protected void invoke(Endpoint ep, byte[] peerBson, int requestId, byte[] args) {
 
         Peer peer = Peer.fromBson(peerBson);
 
