@@ -14,7 +14,6 @@ import addon.WishFile;
 
 import mist.node.Endpoint.*;
 import wish.Peer;
-import wish.RequestInterface;
 
 
 /**
