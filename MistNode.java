@@ -64,22 +64,22 @@ public class MistNode {
     /**
         @return MIST_API_SUCCESS, for a successful start, or MIST_API_ERROR_MULTIPLE_TIMES for error
     */
-    synchronized native int startMistApp(String appName, WishFile wishFile);
-    synchronized native void stopMistApp();
+    native int startMistApp(String appName, WishFile wishFile);
+    native void stopMistApp();
 
-    public synchronized native void addEndpoint(Endpoint ep);
-    public synchronized native void removeEndpoint(Endpoint ep);
+    public native void addEndpoint(Endpoint ep);
+    public native void removeEndpoint(Endpoint ep);
 
-    public synchronized native void readResponse(String fullPath, int requestId, byte[] bson);
-    public synchronized native void readError(String fullPath, int requestId, int code, String msg);
+    public native void readResponse(String fullPath, int requestId, byte[] bson);
+    public native void readError(String fullPath, int requestId, int code, String msg);
 
-    public synchronized native void writeResponse(String fullPath, int requestId);
-    public synchronized native void writeError(String fullPath, int requestId, int code, String msg);
+    public native void writeResponse(String fullPath, int requestId);
+    public native void writeError(String fullPath, int requestId, int code, String msg);
 
-    public synchronized native void invokeResponse(String fullPath, int requestId, byte[] bson);
-    public synchronized native void invokeError(String fullPath, int requestId, int code, String msg);
+    public native void invokeResponse(String fullPath, int requestId, byte[] bson);
+    public native void invokeError(String fullPath, int requestId, int code, String msg);
 
-    public synchronized native void changed(String fullPath);
+    public native void changed(String fullPath);
 
     /**
      * Send a Mist request to remote peer.
@@ -88,9 +88,9 @@ public class MistNode {
      * @param req a BSON representation of the RPC request, {op, args}
      * @return the RPC id; The invalid RPC id 0 is returned for any errors.
      */
-    public synchronized native int request(byte[] peer, byte[] req, RequestCb cb); //will call mist_app_request
+    public native int request(byte[] peer, byte[] req, RequestCb cb); //will call mist_app_request
 
-    public synchronized native void requestCancel(int id);
+    public native void requestCancel(int id);
 
 
     /**
