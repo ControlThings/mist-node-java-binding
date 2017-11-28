@@ -200,14 +200,6 @@ public class MistNode {
         ep.getInvokeCb().invoke(args, peer, new InvokeResponse(ep.getEpid(), requestId));
     }
 
-    void online(byte[] peerBson) {
-
-    }
-
-    void offline(byte[] peerBson) {
-
-    }
-    
     static void registerRpcErrorHandler(Error error) {
         synchronized (errorHandleList) {
             errorHandleList.add(error);
