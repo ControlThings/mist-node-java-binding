@@ -26,7 +26,7 @@ public class Errors {
     private Errors() {
         id = 1;
         nodeCbHashMap = new HashMap<>();
-        MistNode.getInstance().registerNodeRpcErrorHandler(new MistNode.Error() {
+        MistNode.getInstance().registerRpcErrorHandler(new MistNode.Error() {
             @Override
             public void cb(int code, String msg) {
                 nodeError(code, msg);

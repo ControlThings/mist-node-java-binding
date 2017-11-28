@@ -28,7 +28,7 @@ public class MistNode {
     /** startMistApp return error return for other errors */
     private static final int MIST_NODE_ERROR_UNSPECIFIED = -10;
 
-    private static List<Error> nodeErrorHandleList = new ArrayList<>();
+    private static List<Error> errorHandleList = new ArrayList<>();
 
     static {
         System.loadLibrary("mist");
@@ -208,9 +208,9 @@ public class MistNode {
 
     }
     
-    static void registerNodeRpcErrorHandler(Error error) {
-        synchronized (nodeErrorHandleList) {
-            nodeErrorHandleList.add(error);
+    static void registerRpcErrorHandler(Error error) {
+        synchronized (errorHandleList) {
+            errorHandleList.add(error);
         }
     }
 
@@ -249,8 +249,8 @@ public class MistNode {
          * @param msg  a free-text error message
          */
         public void err(int code, String msg) {
-            synchronized (nodeErrorHandleList) {
-                for (Error error : nodeErrorHandleList) {
+            synchronized (errorHandleList) {
+                for (Error error : errorHandleList) {
                     error.cb(code, msg);
                 }
             }
