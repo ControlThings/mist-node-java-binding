@@ -35,27 +35,28 @@ class ControlFollow {
 
             @Override
             public void response(byte[] data) {
+                String epid;
+                BsonValue bsonValue;
                 try {
                     BsonDocument bson = new RawBsonDocument(data);
                     BsonDocument bsonData = bson.get("data").asDocument();
-
-                    String epid = bsonData.getString("id").getValue();
-
-                    BsonValue bsonValue = bsonData.get("data");
-                    if (bsonValue.isBoolean()) {
-                        cb.cbBool(epid, bsonValue.asBoolean().getValue());
-                    }
-                    if (bsonValue.isInt32()) {
-                        cb.cbInt(epid, bsonValue.asInt32().getValue());
-                    }
-                    if (bsonValue.isDouble()) {
-                        cb.cbFloat(epid, bsonValue.asDouble().getValue());
-                    }
-                    if (bsonValue.isString()) {
-                        cb.cbString(epid, bsonValue.asString().getValue());
-                    }
+                    epid = bsonData.getString("id").getValue();
+                    bsonValue = bsonData.get("data");
                 } catch (BSONException e) {
                     cb.err(Callback.BSON_ERROR_CODE, Callback.BSON_ERROR_STRING);
+                    return;
+                }
+                if (bsonValue.isBoolean()) {
+                    cb.cbBool(epid, bsonValue.asBoolean().getValue());
+                }
+                if (bsonValue.isInt32()) {
+                    cb.cbInt(epid, bsonValue.asInt32().getValue());
+                }
+                if (bsonValue.isDouble()) {
+                    cb.cbFloat(epid, bsonValue.asDouble().getValue());
+                }
+                if (bsonValue.isString()) {
+                    cb.cbString(epid, bsonValue.asString().getValue());
                 }
             }
 

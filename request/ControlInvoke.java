@@ -6,6 +6,7 @@ import org.bson.BsonBinary;
 import org.bson.BsonDocument;
 import org.bson.BsonDocumentReader;
 import org.bson.BsonReader;
+import org.bson.BsonValue;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
 
@@ -62,28 +63,38 @@ class ControlInvoke {
 
             @Override
             public void response(byte[] data) {
-
+                BsonValue bsonValue;
                 try {
                     BsonDocument bson = new RawBsonDocument(data);
-                    if (bson.get("data").isBoolean()) {
-                        cb.cbBool(bson.get("data").asBoolean().getValue());
-                    } else if (bson.get("data").isInt32()) {
-                        cb.cbInt(bson.get("data").asInt32().getValue());
-                    } else if (bson.get("data").isDouble()) {
-                        cb.cbFloat((float) bson.get("data").asDouble().getValue());
-                    } else if (bson.get("data").isString()) {
-                        cb.cbString(bson.get("data").asString().getValue());
-                    } else if (bson.get("data").isBinary()) {
-                        cb.cbByte(bson.get("data").asBinary().getData());
-                    } else if (bson.get("data").isDocument()) {
-                        cb.cbDocument(bson.get("data").asDocument());
-                    } else if (bson.get("data").isArray()) {
-                        cb.cbArray(bson.get("data").asArray());
+                    if (bson.containsKey("data")) {
+                        bsonValue = bson.get("data");
                     } else {
                         return;
                     }
                 } catch (BSONException e) {
                     cb.err(Callback.BSON_ERROR_CODE, Callback.BSON_ERROR_STRING);
+                    return;
+                }
+                if (bsonValue.isBoolean()) {
+                    cb.cbBool(bsonValue.asBoolean().getValue());
+                }
+                if (bsonValue.isInt32()) {
+                    cb.cbInt(bsonValue.asInt32().getValue());
+                }
+                if (bsonValue.isDouble()) {
+                    cb.cbFloat((float) bsonValue.asDouble().getValue());
+                }
+                if (bsonValue.isString()) {
+                    cb.cbString(bsonValue.asString().getValue());
+                }
+                if (bsonValue.isBinary()) {
+                    cb.cbByte(bsonValue.asBinary().getData());
+                }
+                if (bsonValue.isDocument()) {
+                    cb.cbDocument(bsonValue.asDocument());
+                }
+                if (bsonValue.isArray()) {
+                    cb.cbArray(bsonValue.asArray());
                 }
             }
 

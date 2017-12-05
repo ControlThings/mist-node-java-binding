@@ -3,6 +3,7 @@ package mist.node.request;
 import org.bson.BSONException;
 import org.bson.BsonBinaryWriter;
 import org.bson.BsonDocument;
+import org.bson.BsonValue;
 import org.bson.BsonWriter;
 import org.bson.RawBsonDocument;
 import org.bson.io.BasicOutputBuffer;
@@ -37,19 +38,25 @@ class ControlRead {
 
             @Override
             public void response(byte[] data) {
+                BsonValue bsonValue;
                 try {
                     BsonDocument bson = new RawBsonDocument(data);
-                    if (bson.get("data").isBoolean()) {
-                        cb.cbBool(bson.get("data").asBoolean().getValue());
-                    } else if (bson.get("data").isInt32()) {
-                        cb.cbInt(bson.get("data").asInt32().getValue());
-                    } else if (bson.get("data").isDouble()) {
-                        cb.cbFloat((float) bson.get("data").asDouble().getValue());
-                    } else if (bson.get("data").isString()) {
-                        cb.cbString(bson.get("data").asString().getValue());
-                    }
+                    bsonValue = bson.get("data");
                 } catch (BSONException e) {
                     cb.err(Callback.BSON_ERROR_CODE, Callback.BSON_ERROR_STRING);
+                    return;
+                }
+                if (bsonValue.isBoolean()) {
+                    cb.cbBool(bsonValue.asBoolean().getValue());
+                }
+                if (bsonValue.isInt32()) {
+                    cb.cbInt(bsonValue.asInt32().getValue());
+                }
+                if (bsonValue.isDouble()) {
+                    cb.cbFloat((float) bsonValue.asDouble().getValue());
+                }
+                if (bsonValue.isString()) {
+                    cb.cbString(bsonValue.asString().getValue());
                 }
             }
 

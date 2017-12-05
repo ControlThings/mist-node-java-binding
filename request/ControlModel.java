@@ -38,20 +38,19 @@ class ControlModel {
 
             @Override
             public void response(byte[] data) {
+                BasicOutputBuffer outputBuffer;
                 try {
                     BsonDocument bson = new RawBsonDocument(data);
                     BsonDocument bsonDocument = bson.get("data").asDocument();
-
                     BsonReader bsonReader = new BsonDocumentReader(bsonDocument);
-
-                    BasicOutputBuffer outputBuffer = new BasicOutputBuffer();
+                    outputBuffer = new BasicOutputBuffer();
                     BsonWriter bsonWriter = new BsonBinaryWriter(outputBuffer);
                     bsonWriter.pipe(bsonReader);
-
-                    cb.cb(outputBuffer.toByteArray());
                 } catch (BSONException e) {
                     cb.err(Callback.BSON_ERROR_CODE, Callback.BSON_ERROR_STRING);
+                    return;
                 }
+                cb.cb(outputBuffer.toByteArray());
             }
 
             @Override
