@@ -45,7 +45,7 @@ public class MistNode {
         return MistNodeHolder.INSTANCE;
     }
 
-    public void startMistApp(Context context) {
+    public synchronized void startMistApp(Context context) {
         String appName = context.getPackageName();
         if (appName.length() > 32) {
             appName = appName.substring(0, 32);
