@@ -377,4 +377,8 @@ public class Endpoint {
         }
     }
 
+    public Endpoint add() {
+        MistNode.getInstance().addEndpoint(this);
+        return this;
+    }
 }
